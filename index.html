@@ -2,13 +2,43 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>basic static website</title>
+	<meta name="keywords" content="fart,farting horse,residential joke">
+	<meta name="author" content="The Fictitious Mr.Tonaldo Rumpadore (Mr T.Rump)">
+	<title>Acoustic Behinds</title>
 </head>
 <body>
-	Hello world!
-	<audio id="fartaudio">
+	<script>
+		function playFart(){
+			audio_ref = document.getElementById('fartaudio' + (Math.floor(Math.random()*2) + 1));
+			if (!audio_ref.paused) {
+				audio_ref.currentTime = 0;
+			}
+			audio_ref.play();
+			return audio_ref.duration;
+		}
+		function showImage01(){
+			document.getElementById('horseimage').src='./horse01.png';
+		}
+		function showImage02(){
+			document.getElementById('horseimage').src='./horse02.png';
+		}
+		function executeClick(){
+			showImage02();
+			window.setTimeout(showImage01,playFart()*1000);
+		}
+	</script>
+	<audio id="fartaudio1" preload="auto">
 		<source src="./fart01.mp3">
 	</audio>
-	<a href="#" onClick="document.getElementById('fartaudio').play(); return false;">Click me!</a>
+	<audio id="fartaudio2" preload="auto">
+		<source src="./fart02.mp3">
+	</audio>
+	<div style="width:100%; margin:auto">
+		<div style="max-width:500px; margin:auto">
+			<a href="#" onClick="executeClick(); return false;">
+				<img id="horseimage" alt="Horse facing backwards" src="./horse01.png" style="width:400px; margin:auto">
+			</a>
+		</div>
+	</div>
 </body>
 </html>
